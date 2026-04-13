@@ -1,0 +1,55 @@
+% SPDX-FileCopyrightText: 2025 IObundle
+%
+% SPDX-License-Identifier: MIT
+
+\section{Milestone Implementation Details}
+\label{sec:milestone_details}
+
+This section provides technical details on the implementation of the milestones completed to date.
+
+\subsection{Milestone 1: Specification and Integration}
+
+\textbf{1.b Build SoCLinux Base:}
+The SoCLinux system was successfully built upon the \texttt{iob\_system\_linux} module, a derivative of the core \texttt{iob\_system} library in Py2HWSW. This system inherits automated build scripts, Linux kernel dependencies, and support for both bare-metal firmware and the Linux OS.
+
+\textbf{1.c CPU Selection:}
+Support for CPU switching was implemented using the \texttt{cpu} parameter in the SoC configuration. This allows seamless integration of different RISC-V cores. Currently, both \texttt{iob\_vexriscv} and its successor, \texttt{iob\_vexiiriscv}, are supported. Wrapper modules were developed to ensure these CPUs match the internal interfaces expected by the SoC crossbar.
+
+\textbf{1.d, 1.e, 1.f IP Core Updates:}
+The \texttt{IOb-Cache}, \texttt{IOb-UART16550}, and \texttt{IOb-Eth} cores were updated to the latest Py2HWSW flow. This involved refactoring the cores to use standard Python-based hardware descriptions, enabling automated port mapping and CSR generation.
+
+\textbf{1.g, 1.h Verification Toolset:}
+Industrial-grade verification tools were integrated into the Py2HWSW framework:
+\begin{itemize}
+    \item \textbf{Verilator Linting:} A custom linting flow with modular configuration and waiver support (\texttt{.vlt} files) was implemented.
+    \item \textbf{Simulation Coverage:} An automated script (\texttt{iob\_coverage\_analyze}) was developed to process Verilator coverage annotations, providing detailed reports on covered/waived lines for each module.
+\end{itemize}
+
+\textbf{1.i FuseSoC Export:}
+A dedicated export script (\texttt{fusesoc.py}) was added to Py2HWSW. This allows any core in the library to be exported as a FuseSoC package, improving compatibility with the broader open-source hardware ecosystem.
+
+\subsection{Milestone 2: Linux Driver Creation}
+
+\textbf{2.a, 2.b Automated CSR Access:}
+The \texttt{iob\_linux\_device\_drivers} module was developed to automate the generation of Linux kernel modules. It supports three distinct kernel-userspace interfaces:
+\begin{itemize}
+    \item \textbf{sysfs:} For basic register access via the filesystem.
+    \item \textbf{dev:} Providing a standard character device interface.
+    \item \textbf{ioctl:} Supporting complex operations through I/O control commands.
+\end{itemize}
+
+\textbf{2.c, 2.d, 2.e Driver Tooling:}
+A suite of scripts was integrated to automate the "Linux support package":
+\begin{itemize}
+    \item \textbf{Tests (2.c):} \texttt{create\_peripheral\_tests.py} generates C-based test suites for functionality and performance verification.
+    \item \textbf{Device Tree (2.d):} \texttt{create\_device\_tree\_files.py} and \texttt{iob\_system\_dts.py} automate the generation of SoC-level DTS files from peripheral snippets.
+    \item \textbf{Documentation (2.e):} \texttt{create\_driver\_documentation.py} generates LaTeX documentation for the auto-generated drivers.
+\end{itemize}
+
+\textbf{2.f Development Workflow:}
+The \texttt{kernel-module-rebuild} Makefile target was created to streamline development. It automates the process of rebuilding the kernel module, uploading it via ZMODEM to a running FPGA instance, and reloading the driver without requiring a system reboot.
+
+\subsection{Milestone 3: Test and Validation}
+
+\textbf{3.g, 3.h, 3.i IP Promotion:}
+The \texttt{IOb-Cache}, \texttt{IOb-UART16550}, and \texttt{IOb-Eth} cores were officially released as FuseSoC cores and published on the standard \texttt{fusesoc-cores} library. This milestone was accompanied by professional press releases to promote the adoption of these industrial-grade open-source components.

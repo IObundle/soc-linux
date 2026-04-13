@@ -1,0 +1,51 @@
+% SPDX-FileCopyrightText: 2025 IObundle
+%
+% SPDX-License-Identifier: MIT
+
+The project plan is organized into the following milestones:
+
+\begin{description}[itemsep=3ex]
+    \item[Milestone 1 - Specification and Integration] \leavevmode
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0.5ex, parsep=0pt]
+        \item [$\checkmark$] 1.a Design Specification Document (this document)
+        \item [$\checkmark$] 1.b Build first version of SoCLinux
+        \item [$\checkmark$] 1.c CPU selection (VexRiscv, VexiiRiscv)
+        \item [$\checkmark$] 1.d Update IOb-Cache (Py2HWSW flow)
+        \item [$\checkmark$] 1.e Update IOb-UART16550 (Py2HWSW flow)
+        \item [$\checkmark$] 1.f Update IOb-Eth (Py2HWSW flow)
+        \item [$\checkmark$] 1.g Verilator Industrial-grade Linting
+        \item [$\checkmark$] 1.h Simulation Coverage scripts
+        \item [$\checkmark$] 1.i FuseSoC export script
+    \end{itemize}
+
+    \item[Milestone 2 - Linux Driver Creation] \leavevmode
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0.5ex, parsep=0pt]
+        \item [$\checkmark$] 2.a CSR access functions (sysfs)
+        \item [$\checkmark$] 2.b CSR access functions (dev, ioctl)
+        \item [$\checkmark$] 2.c Peripheral test suite generation
+        \item [$\checkmark$] 2.d Linux Device Tree (DTS) generation
+        \item [$\checkmark$] 2.e Driver documentation generation
+        \item [$\checkmark$] 2.f Kernel module rebuild and reload scripts
+        \item [$\checkmark$] 2.g Peripheral interrupt support (IOb-Timer)
+        \item [$\checkmark$] 2.h External CLINT (iob\_clint) integration
+        \item [$\checkmark$] 2.i External PLIC (iob\_plic) integration
+    \end{itemize}
+
+    \item[Milestone 3 - Test and Validation] \leavevmode
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0.5ex, parsep=0pt]
+        \item [ ] 3.a IOb-Cache Linux driver
+        \item [ ] 3.b IOb-UART16550 Linux driver
+        \item [ ] 3.c IOb-Eth Linux driver
+        \item [$\checkmark$] 3.d IOb-Cache Lint and simulation coverage
+        \item [$\checkmark$] 3.e IOb-UART16550 Lint and simulation coverage
+        \item [$\checkmark$] 3.f IOb-Eth Lint and simulation coverage
+        \item [$\checkmark$] 3.g Export and promote IOb-Cache (FuseSoC)
+        \item [$\checkmark$] 3.h Export and promote IOb-UART16550 (FuseSoC)
+        \item [$\checkmark$] 3.i Export and promote IOb-Eth (FuseSoC)
+    \end{itemize}
+
+    \item[Milestone 4 - Dissemination] \leavevmode
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0.5ex, parsep=0pt]
+        \item [ ] 4.a Publish dissemination article (Zenodo)
+    \end{itemize}
+\end{description}
