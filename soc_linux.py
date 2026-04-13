@@ -6,7 +6,7 @@
 def setup(py_params: dict):
     # Py2hwsw dictionary describing current core
     attributes_dict = {
-        "version": "0.8",
+        "version": "0.8.0",
         "parent": {
             # SoC-Linux is a child core of iob_system_linux: https://github.com/IObundle/py2hwsw/tree/main/py2hwsw/lib/hardware/iob_system_linux
             # SoC-Linux will inherit all attributes/files from the iob_system_linux core.
