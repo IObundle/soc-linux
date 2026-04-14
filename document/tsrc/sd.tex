@@ -1,0 +1,65 @@
+% SPDX-FileCopyrightText: 2025 IObundle
+%
+% SPDX-License-Identifier: MIT
+
+\documentclass{ug}
+
+\input{sd_title}
+\date{\today}
+\category{Design Specification}
+
+\usepackage{amssymb}
+
+\input{color}
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+\pagenumbering{gobble}
+
+% Remove blank newline before version and shorthash strings of included file.
+\CatchFileDef{\version}{\NAME\_version.tex}{\endlinechar=-1\relax}
+\CatchFileDef{\shortHash}{shortHash.tex}{\endlinechar=-1\relax}
+\vspace*{\fill}
+Design Specification, V\version, Build \shortHash
+\hspace*{\fill}\raisebox{-\height}{\includegraphics[keepaspectratio,scale=.7]{Logo.png}}
+
+\cleardoublepage
+\pagenumbering{roman}
+\setcounter{page}{1}
+\input{sd_revhist}
+\cleardoublepage
+\tableofcontents
+\clearpage
+\listoftables
+\clearpage
+\listoffigures
+\cleardoublepage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Introduction}
+\label{sec:intro}
+\input{sd_intro}
+
+\section{System Architecture}
+\label{sec:architecture}
+\input{sd_architecture}
+
+\section{Work Plan and Milestones}
+\label{sec:milestones}
+\input{sd_milestones}
+
+\input{sd_milestone_details}
+
+\section{Verification Strategy}
+\label{sec:verification}
+\input{sd_verification}
+
+\section{Future Work}
+\label{sec:future_work}
+\input{sd_future_work}
+
+\end{document}

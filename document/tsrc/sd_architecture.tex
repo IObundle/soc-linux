@@ -1,0 +1,18 @@
+% SPDX-FileCopyrightText: 2025 IObundle
+%
+% SPDX-License-Identifier: MIT
+
+The SoCLinux system architecture is built upon the Py2HWSW framework, which enables the seamless integration of hardware and software components. The system consists of the following key elements:
+
+\begin{itemize}
+    \item \textbf{RISC-V CPU:} Supports VexRiscv and VexiiRiscv. To simplify integration and enhance maintainability, internal CLINT and PLIC units are removed from the CPU.
+    \item \textbf{Interrupt Subsystem:} Uses external \texttt{iob\_clint} and \texttt{iob\_plic} cores. These are integrated as standard \texttt{iob\_system} peripherals, allowing them to be managed consistently with other system components and ensuring full compatibility with standard OpenSBI and Linux kernel drivers.
+    \item \textbf{Memory Subsystem:} Includes internal and external caches (IOb-Cache) for optimized memory access.
+    \item \textbf{Peripherals:} Industrial-grade cores such as IOb-UART16550 and IOb-Eth, which are revamped versions of established open-source IPs.
+    \item \textbf{Linux Kernel:} A customized Linux distribution that integrates auto-generated drivers, Device Tree files, and supports peripheral interrupts through the external PLIC.
+    \item \textbf{Automation Scripts:} Python-based scripts that generate CSR access functions, Linux Device Trees (DTS), and LaTeX documentation. The \texttt{iob\_linux\_device\_drivers} module provides automated interrupt support generation.
+\end{itemize}
+
+The IP Core Linux Driver Development tool specifically targets the automation of the bridge between hardware CSRs and the Linux userspace, supporting multiple interfaces such as sysfs, dev, and ioctl, while seamlessly handling interrupt registration.
+
+\clearpage

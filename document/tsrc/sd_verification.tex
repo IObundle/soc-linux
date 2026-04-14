@@ -1,0 +1,14 @@
+% SPDX-FileCopyrightText: 2025 IObundle
+%
+% SPDX-License-Identifier: MIT
+
+The SoCLinux verification strategy is based on a hierarchical approach:
+
+\begin{enumerate}
+    \item \textbf{Unit Testing:} Individual IP cores are validated using Py2HWSW's testbench generation tools.
+    \item \textbf{Verilator Linting:} Ensuring that all RTL code meets industrial-grade quality standards.
+    \item \textbf{Simulation Coverage:} Measuring and analyzing simulation coverage for critical IP cores (e.g., IOb-Cache) using Verilator-based tools and the \texttt{iob\_coverage\_analyze} script.
+    \item \textbf{System-Level Simulation:} Running the complete RISC-V SoC with firmware (bare-metal) and the Linux kernel in simulation.
+    \item \textbf{FPGA Validation:} Prototyping on various FPGA boards (e.g., iob\_aes\_ku040\_db\_g) to verify real-time performance and peripheral driver stability.
+    \item \textbf{Interrupt and Driver Testing:} Running auto-generated test suites in the Linux userspace to verify driver-hardware integration and interrupt triggering through the external PLIC.
+\end{enumerate}
